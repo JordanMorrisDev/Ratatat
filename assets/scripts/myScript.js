@@ -297,6 +297,13 @@ $(document).keydown(function(e) {
         	circleTest.fillColor = "#65E8F8"; 
         	circles.push(circleTest); 
             break;
+                    case 229: 
+            sound26.play(); 
+            createRandomPos();
+            var circleTest = new Path.Circle(new Point(randx, randy), randSize);
+            circleTest.fillColor = "#65E8F8"; 
+            circles.push(circleTest); 
+            break;
 }
 });
 
