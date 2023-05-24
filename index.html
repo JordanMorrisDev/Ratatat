@@ -10,11 +10,17 @@
 </head>
 
 <body>
-	<h1>Ratatat Sample Visualiser</h1>
+	<div class = "heading">
+		<h1>Ratatat Sample Playground</h1>
+	</div>
+	
 	<canvas id="myCanvas">
 	</canvas>
-	<button id="sample-one">Sample one</button>
-	<button id="sample-two">Sample two</button>
+	<div class ="sample-buttons">
+		<button id="sample-one">Full Pack</button>
+	<button id="sample-two">Smashing Pack</button>
+	</div>
+	
 	<div class="columns">
 		<div>
 			<h2>Instructions:</h2>
@@ -23,23 +29,57 @@
 				<li>Use A-Z on your keyboard to create sounds and shapes</li>
 				<li>If you enjoy the pack follow the link to purchase</li>
 				</ul>
+				<h2>Sounds:</h2>
+				<div id="sounds-information">
+						<ul>
+			</ul>
+					</div>
+		
 		</div>
 		<div id="sample-information">
-			<h2>Sample information:</h2>
-			<ul>
-				<li>Artist: [Artist name here]</li>
-				<li>Pack: [Pack name here]</li>
-				<li>Soundcloud: <a href="[soundcloud link here]"> link to [artist name here] </a></li>
-				<li>Purchase:<a href="[purchase link here]"> Purchase [pack name here]</a> </li>
-			</ul>
-			<h3>Sounds:</h3>
-			<ul>
-			</ul>
+			<div class="profile-card">
+				<div class="profile-info">
+					<h2 class="profile-name">
+						[Artist name here]
+					</h2>
+					<div class="profile-pack">
+						<img src="[pack picture link here]" alt="[pack name here]">
+						<h3 class="profile-pack-name">
+							[Pack name here]
+						</h3>
+					</div>
+					<div class="profile-stats">
+						<ul>
+							<li>
+								Times Downloaded: [times downloaded here]
+							</li>
+							<li>
+								Pack Size: [pack size here]
+							</li>
+							<li>
+								Pack Price: [pack price here]
+							</li>
+						</ul>
+					</div>
+<div class="profile-links">
+  <a href="[soundcloud link here]" >
+    Soundcloud: [artist name here]
+  </a>
+	
+  <div class="cta-button">
+    <a href="[purchase link here]">
+      Purchase [pack name here]
+    </a>
+  </div>
+</div>
+				</div>
+			</div>
+			
 		</div>
 	</div>
-	<button id="openKeyboard">Open Keyboard</button>
+	<!-- <button id="openKeyboard">Open Keyboard</button>
 	<input type="text" name="">
-	<input id="hiddenInput" style="visibility: hidden;">
+	<input id="hiddenInput" style="visibility: hidden;"> -->
 </body>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.11.5/paper-core.min.js"></script>
 <script type="text/javascript" src="script.js"></script>

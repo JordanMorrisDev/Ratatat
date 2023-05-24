@@ -1,4 +1,4 @@
-const canvas = document.getElementById('myCanvas');
+canvas = document.getElementById('myCanvas');
 let maxWidth = canvas.scrollWidth;
 let maxHeight = canvas.scrollHeight;
 var ctx = canvas.getContext('2d');
@@ -18,94 +18,67 @@ let rows = 5;
 let cols = 4;
 let text = ""
 let keyMap = {}
-const fs = require('fs');
 
-function populateSounds(soundObj, soundDir) {
-	soundObj.sounds = [];
-
-	fs.readdir(soundDir, (err, files) => {
-		if (err) {
-			console.error(`Unable to read directory ${soundDir}: ${err}`);
-			return;
-		}
-
-		files.forEach((file) => {
-			if (file.endsWith('.mp3')) {
-				soundObj.sounds.push(file.replace('.mp3', ''));
-			}
-		});
-	});
-}
-
-// Example usage for soundsOne and soundsTwo objects
 const soundsOne = {
 	soundsName: 'Basic Sound Pack',
-	artistName: 'Open Source',
+	artistName: 'Open Source Artist',
 	soundCloudLink: 'https://soundcloud.com/open-source-sounds/basic-sound-pack',
 	purchaseLink: 'https://www.amazon.com/Open-Source-Sounds-Basic-Sound-Pack/dp/B',
-	sounds: []
+	artistPicture: 'https://i1.sndcdn.com/avatars-7HiDrq59NpEGg6jC-eSdkrA-t200x200.jpg',
+	packPicture: 'https://i1.sndcdn.com/artworks-0pnMT61X6phYPZtG-SJR9iw-t500x500.jpg',
+	timesDownloaded: 0,
+	packSize: 3,
+	packPrice: 10,
+	sounds: [
+		'bubbles',
+		'clay',
+		'confetti',
+		'corona',
+		'dotted-spiral',
+		'flash-1',
+		'flash-2',
+		'flash-3',
+		'glimmer',
+		'moon',
+		'pinwheel',
+		'piston-1',
+		'piston-2',
+		'piston-3',
+		'prism-1',
+		'prism-2',
+		'prism-3',
+		'splits',
+		'squiggle',
+		'strike',
+		'suspension',
+		'timer',
+		'ufo',
+		'veil',
+		'wipe',
+		'zig-zag'
+	]
 };
 
 const soundsTwo = {
-	soundsName: 'Advanced Sound Pack',
-	artistName: 'Open Source',
-	soundCloudLink: 'https://soundcloud.com/open-source-sounds/advanced-sound-pack',
-	purchaseLink: 'https://www.amazon.com/Open-Source-Sounds-Advanced-Sound-Pack/dp/B',
-	sounds: []
+	soundsName: 'Smashing and Breaking',
+	artistName: 'ZapSplat',
+	soundCloudLink: 'https://soundcloud.com/open-source-sounds/second-sound-pack',
+	purchaseLink: 'https://www.amazon.com/Open-Source-Sounds-Second-Sound-Pack/dp/B',
+	artistPicture: 'https://www.zapsplat.com/wp-content/uploads/2021/06/zapsplat-logo.png',
+	packPicture: 'https://www.zapsplat.com/wp-content/uploads/2022/06/zapsplat_pack_cover_glass_bottle_smashes_and_breaks.png',
+	timesDownloaded: "1000+",
+	packSize: 1.3,
+	packPrice: "FREE",
+	sounds: [
+		'bottle_drop_concrete',
+		'bottle_drop_two',
+		'bottle_drop',
+		'concrete_two',
+		'concrete',
+		'drop_smash',
+		'glass_smash'
+	]
 };
-
-populateSounds(soundsOne, 'assets/sounds/soundRoundOne');
-populateSounds(soundsTwo, 'assets/sounds/soundRoundTwo');
-// const soundsOne = {
-// 	soundsName: 'Basic Sound Pack',
-// 	artistName: 'Open Source',
-// 	soundCloudLink: 'https://soundcloud.com/open-source-sounds/basic-sound-pack',
-// 	purchaseLink: 'https://www.amazon.com/Open-Source-Sounds-Basic-Sound-Pack/dp/B',
-// 	sounds: [
-// 		'bubbles',
-// 		'clay',
-// 		'confetti',
-// 		'corona',
-// 		'dotted-spiral',
-// 		'flash-1',
-// 		'flash-2',
-// 		'flash-3',
-// 		'glimmer',
-// 		'moon',
-// 		'pinwheel',
-// 		'piston-1',
-// 		'piston-2',
-// 		'piston-3',
-// 		'prism-1',
-// 		'prism-2',
-// 		'prism-3',
-// 		'splits',
-// 		'squiggle',
-// 		'strike',
-// 		'suspension',
-// 		'timer',
-// 		'ufo',
-// 		'veil',
-// 		'wipe',
-// 		'zig-zag'
-// 	]
-// };
-
-// const soundsTwo = {
-// 	soundsName: 'Second Sound Pack',
-// 	artistName: 'Open Source',
-// 	soundCloudLink: 'https://soundcloud.com/open-source-sounds/second-sound-pack',
-// 	purchaseLink: 'https://www.amazon.com/Open-Source-Sounds-Second-Sound-Pack/dp/B',
-// 	sounds: [
-// 		'bottle_drop_concrete',
-// 		'bottle_drop_two',
-// 		'bottle_drop',
-// 		'concrete_two',
-// 		'concrete',
-// 		'drop_smash',
-// 		'glass_smash'
-// 	]
-// };
 
 const colours = [
 	'#f44025',
@@ -137,10 +110,15 @@ const colours = [
 ]
 
 let soundObjects = {
-	soundsName: soundsOne.soundsName,
-	artistName: soundsOne.artistName,
-	soundCloudLink: soundsOne.soundCloudLink,
-	purchaseLink: soundsOne.purchaseLink,
+	soundsName: 'Basic Sound Pack',
+	artistName: 'Open Source Artist',
+	soundCloudLink: 'https://soundcloud.com/open-source-sounds/basic-sound-pack',
+	purchaseLink: 'https://www.amazon.com/Open-Source-Sounds-Basic-Sound-Pack/dp/B',
+	artistPicture: 'https://i1.sndcdn.com/avatars-7HiDrq59NpEGg6jC-eSdkrA-t200x200.jpg',
+	packPicture: 'https://i1.sndcdn.com/artworks-0pnMT61X6phYPZtG-SJR9iw-t500x500.jpg',
+	timesDownloaded: 0,
+	packSize: 3,
+	packPrice: 10,
 	sounds: soundsOne.sounds.map(sound => new Howl({
 		src: [`assets/sounds/soundRoundOne/${sound}.mp3`]
 	}))
@@ -332,12 +310,12 @@ window.onload = function() {
 	}
 }
 
-document.getElementById('openKeyboard').addEventListener('click', function() {
-	var inputElement = document.getElementById('hiddenInput');
-	inputElement.style.visibility = 'visible'; // unhide the input
-	inputElement.focus(); // focus on it so keyboard pops
-	inputElement.style.visibility = 'hidden'; // hide it again
-});
+// document.getElementById('openKeyboard').addEventListener('click', function() {
+// 	var inputElement = document.getElementById('hiddenInput');
+// 	inputElement.style.visibility = 'visible'; // unhide the input
+// 	inputElement.focus(); // focus on it so keyboard pops
+// 	inputElement.style.visibility = 'hidden'; // hide it again
+// });
 
 function onResize(event) {
 	view.viewSize = [maxWidth, maxHeight];
@@ -351,18 +329,33 @@ function onResize(event) {
 window.addEventListener('resize', onResize);
 
 function updateDom() {
-	const sampleInfo = document.getElementById("sample-information").querySelectorAll("li"); // Get the <li> elements
-	sampleInfo[0].textContent = `Artist: ${soundObjects.artistName}`; // Update the first <li> element
-	sampleInfo[1].textContent = `Pack: ${soundObjects.soundsName}`; // Update the second <li> element
-	const soundcloudLink = sampleInfo[2].querySelector("a");
-	soundcloudLink.textContent = `link to ${soundObjects.artistName}`; // Update the third <li> element's <a> text
-	soundcloudLink.setAttribute("href", soundObjects.soundCloudLink); // Update the third <li> element's <a> href attribute
-	const purchaseLink = sampleInfo[3].querySelector("a");
-	purchaseLink.textContent = `Purchase ${soundObjects.soundsName}`; // Update the fourth <li> element's <a> text
-	purchaseLink.setAttribute("href", soundObjects.purchaseLink); // Update the fourth <li> element's <a> href attribute
+	 const profileName = document.querySelector(".profile-name");
+  profileName.innerText = soundObjects.artistName;
+  const packName = document.querySelector(".profile-pack-name");
+  packName.innerText = soundObjects.soundsName;
+  // const profilePicture = document.querySelector(".profile-picture img");
+  // profilePicture.src = soundObjects.artistPicture;
+  // profilePicture.alt = soundObjects.artistName;
+  const packPicture = document.querySelector(".profile-pack img");
+  packPicture.src = soundObjects.packPicture;
+  packPicture.alt = soundObjects.soundsName;
+  const soundcloudLink = document.querySelector(".profile-links a:first-child");
+  soundcloudLink.href = soundObjects.soundCloudLink;
+  soundcloudLink.textContent = `Soundcloud: ${soundObjects.artistName}`;
+  const purchaseLink = document.querySelector(".profile-links .cta-button a");
+  purchaseLink.href = soundObjects.purchaseLink;
+  purchaseLink.textContent = `Purchase ${soundObjects.soundsName}`;
+  const timesDownloaded = document.querySelector(".profile-stats li:nth-child(1)");
+  timesDownloaded.textContent = `Times Downloaded: ${soundObjects.timesDownloaded}`;
+  const packSize = document.querySelector(".profile-stats li:nth-child(2)");
+  packSize.textContent = `Pack Size: ${soundObjects.packSize}MB`;
+  const packPrice = document.querySelector(".profile-stats li:nth-child(3)");
+  packPrice.textContent = `Pack Price: $${soundObjects.packPrice}`;
+  const ctaButton = document.querySelector(".cta-button");
+  ctaButton.classList.add("large-cta-button");
 
 	// Get the <ul> element for the Sounds list and clear any current items
-	const soundsList = document.getElementById('sample-information').querySelectorAll('ul')[1];
+	const soundsList = document.getElementById('sounds-information').querySelectorAll('ul')[0];
 	soundsList.innerHTML = '';
 	const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 	// Add each sound name to the list
@@ -381,6 +374,11 @@ document.getElementById("sample-one").addEventListener("click", function() {
 		artistName: soundsOne.artistName,
 		soundCloudLink: soundsOne.soundCloudLink,
 		purchaseLink: soundsOne.purchaseLink,
+		artistPicture: soundsOne.artistPicture,
+		packPicture: soundsOne.packPicture,
+		timesDownloaded: soundsOne.timesDownloaded,
+		packSize: soundsOne.packSize,
+		packPrice: soundsOne.packPrice,
 		sounds: soundsOne.sounds.map(sound => new Howl({
 			src: [`assets/sounds/soundRoundOne/${sound}.mp3`]
 		}))
@@ -396,6 +394,11 @@ document.getElementById("sample-two").addEventListener("click", function() {
 		artistName: soundsTwo.artistName,
 		soundCloudLink: soundsTwo.soundCloudLink,
 		purchaseLink: soundsTwo.purchaseLink,
+		artistPicture: soundsTwo.artistPicture,
+		packPicture: soundsTwo.packPicture,
+		timesDownloaded: soundsTwo.timesDownloaded,
+		packSize: soundsTwo.packSize,
+		packPrice: soundsTwo.packPrice,
 		sounds: soundsTwo.sounds.map(sound => new Howl({
 			src: [`assets/sounds/soundRoundTwo/${sound}.mp3`]
 		}))
